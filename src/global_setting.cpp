@@ -3,6 +3,8 @@
 #include "esp32-hal-log.h"
 #include <WiFi.h>
 
+#include "../include/localsetting.h"
+
 #define DEFAULT_WALLPAPER 2
 SemaphoreHandle_t _xSemaphore_LoadingAnime = NULL;
 static uint8_t _loading_anime_eixt_flag = false;
@@ -57,14 +59,14 @@ const char *wallpapers_name_ja[] = {
 };
 uint16_t global_wallpaper = DEFAULT_WALLPAPER;
 uint8_t global_language = LANGUAGE_EN;
-String global_wifi_ssid;
-String global_wifi_password;
+String global_wifi_ssid = LOCAL_SSID;
+String global_wifi_password = LOCAL_PWD;
 uint8_t global_wifi_configed = false;
 uint16_t global_reader_textsize = 32;
 uint8_t global_time_synced = false;
 uint8_t global_ttf_file_loaded = false;
 uint8_t global_init_status = 0xFF;
-int8_t global_timezone = 8;
+int8_t global_timezone = 9; // TIMEZONE=TOKYO
 
 
 int8_t GetTimeZone(void)
